@@ -1,22 +1,24 @@
 package com.dayorolands.expectactual
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Button
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
-
+import androidx.compose.ui.unit.dp
 import expectactualproject.composeapp.generated.resources.Res
-import expectactualproject.composeapp.generated.resources.compose_multiplatform
+import expectactualproject.composeapp.generated.resources.bag_circle
+import expectactualproject.composeapp.generated.resources.hello_word
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 @Preview
@@ -24,12 +26,22 @@ fun App(
     batteryManager: BatteryManager
 ) {
     MaterialTheme {
-        Box(
+        Column (
             modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
             Text(
                 text = "The current battery level is ${batteryManager.getBatteryLevel()}"
+            )
+            Spacer(Modifier.height(10.dp))
+            Text(
+                text = stringResource(Res.string.hello_word)
+            )
+            Spacer(Modifier.height(10.dp))
+            Image(
+                painter = painterResource(Res.drawable.bag_circle),
+                contentDescription = null
             )
         }
     }
